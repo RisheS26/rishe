@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rishe S — Resume</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg: #F6F8F7;
+    --surface: #FFFFFF;
+    --ink: #14231F;
+    --ink-soft: #4B5C57;
+    --ink-faint: #7C8B86;
+    --accent: #2F6F62;
+    --accent-deep: #1E4B41;
+    --accent-soft: #E4EDE9;
+    --gold: #B8862B;
+    --gold-soft: #F3ECDD;
+    --line: #DCE5E1;
+    --radius: 10px;
+  }
+
+  * { box-sizing: border-box; }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--ink);
+    font-family: 'Inter', -apple-system, sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .page {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 64px 48px 80px;
+    background: var(--bg);
+  }
+
+  /* ---------- Utility bar (screen only) ---------- */
+  .toolbar {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 50;
+  }
+  .toolbar button {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    letter-spacing: 0.03em;
+    background: var(--ink);
+    color: #fff;
+    border: none;
+    padding: 10px 16px;
+    border-radius: 100px;
+    cursor: pointer;
+    box-shadow: 0 4px 14px rgba(20,35,31,0.18);
+    transition: transform 0.15s ease, background 0.15s ease;
+  }
+  .toolbar button:hover { background: var(--accent-deep); transform: translateY(-1px); }
+
+  /* ---------- Header ---------- */
+  header {
+    margin-bottom: 40px;
+  }
+  .eyebrow {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 46px;
+    letter-spacing: -0.02em;
+    margin: 0 0 6px;
+    line-height: 1.02;
+  }
+  .role-line {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16.5px;
+    font-weight: 500;
+    color: var(--ink-soft);
+    margin: 0 0 22px;
+  }
+  .flow-rule {
+    height: 3px;
+    width: 100%;
+    border-radius: 3px;
+    background: linear-gradient(90deg, var(--accent) 0%, var(--accent) 38%, var(--gold) 100%);
+    margin-bottom: 22px;
+  }
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px 22px;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12.5px;
+    color: var(--ink-soft);
+  }
+  .contact-row a { color: var(--ink-soft); text-decoration: none; border-bottom: 1px solid var(--line); }
+  .contact-row a:hover { color: var(--accent); border-color: var(--accent); }
+
+  /* ---------- Section headings ---------- */
+  section { margin-bottom: 38px; }
+  .sec-head {
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 16px;
+  }
+  .sec-num {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-faint);
+  }
+  h2 {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--ink);
+    margin: 0;
+  }
+  .sec-line {
+    flex: 1;
+    height: 1px;
+    background: var(--line);
+  }
+
+  p.summary {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--ink-soft);
+    max-width: 66ch;
+  }
+
+  /* ---------- Experience timeline ---------- */
+  .timeline {
+    position: relative;
+    padding-left: 26px;
+  }
+  .timeline::before {
+    content: "";
+    position: absolute;
+    left: 5px;
+    top: 6px;
+    bottom: 6px;
+    width: 2px;
+    background: linear-gradient(180deg, var(--accent) 0%, var(--accent-soft) 100%);
+    border-radius: 2px;
+  }
+  .role {
+    position: relative;
+    padding-bottom: 28px;
+  }
+  .role:last-child { padding-bottom: 0; }
+  .role::before {
+    content: "";
+    position: absolute;
+    left: -26px;
+    top: 4px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: var(--surface);
+    border: 2.5px solid var(--accent);
+  }
+  .role-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    flex-wrap: wrap;
+    gap: 4px 14px;
+    margin-bottom: 4px;
+  }
+  .role-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 16.5px;
+  }
+  .role-org { color: var(--accent); font-weight: 500; }
+  .role-date {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 12px;
+    color: var(--ink-faint);
+    white-space: nowrap;
+  }
+  .role-loc {
+    font-size: 12.5px;
+    color: var(--ink-faint);
+    margin-bottom: 8px;
+  }
+  .role ul {
+    margin: 6px 0 0;
+    padding-left: 18px;
+  }
+  .role li {
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--ink-soft);
+    margin-bottom: 4px;
+  }
+
+  /* ---------- Achievement cards ---------- */
+  .grid-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+  }
+  .card .tag {
+    display: inline-block;
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--gold);
+    background: var(--gold-soft);
+    padding: 2px 8px;
+    border-radius: 100px;
+    margin-bottom: 8px;
+  }
+  .card .title { font-weight: 600; font-size: 14px; margin-bottom: 2px; }
+  .card .desc { font-size: 12.5px; color: var(--ink-soft); line-height: 1.5; }
+
+  /* ---------- Certifications ---------- */
+  .cert-list { display: flex; flex-direction: column; gap: 0; }
+  .cert-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+    padding: 11px 0;
+    border-bottom: 1px solid var(--line);
+    font-size: 14px;
+  }
+  .cert-row:last-child { border-bottom: none; }
+  .cert-name { font-weight: 500; }
+  .cert-issuer {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11.5px;
+    color: var(--ink-faint);
+    white-space: nowrap;
+  }
+
+  /* ---------- Skills ---------- */
+  .skill-groups { display: flex; flex-direction: column; gap: 14px; }
+  .skill-group-label {
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-faint);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+  }
+  .chip-row { display: flex; flex-wrap: wrap; gap: 8px; }
+  .chip {
+    font-size: 13px;
+    padding: 6px 13px;
+    border-radius: 100px;
+    background: var(--accent-soft);
+    color: var(--accent-deep);
+    font-weight: 500;
+  }
+
+  /* ---------- Education / footer ---------- */
+  .edu-block {
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+  }
+  .edu-title { font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 15px; }
+  .edu-sub { font-size: 13px; color: var(--ink-soft); margin-top: 2px; }
+  .edu-date { font-family: 'IBM Plex Mono', monospace; font-size: 12px; color: var(--ink-faint); margin-top: 6px; }
+
+  footer {
+    margin-top: 50px;
+    padding-top: 18px;
+    border-top: 1px solid var(--line);
+    font-family: 'IBM Plex Mono', monospace;
+    font-size: 11px;
+    color: var(--ink-faint);
+    display: flex;
+    justify-content: space-between;
+  }
+
+  @media (max-width: 640px) {
+    .page { padding: 48px 22px 60px; }
+    h1 { font-size: 34px; }
+    .grid-cards { grid-template-columns: 1fr; }
+    .role-top { flex-direction: column; }
+  }
+
+  @media print {
+    .toolbar { display: none; }
+    body, .page { background: #fff; }
+    .page { padding: 0; max-width: none; }
+    a { color: var(--ink-soft) !important; }
+    section { break-inside: avoid; }
+    .role { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<div class="toolbar">
+  <button onclick="window.print()">Download as PDF</button>
+</div>
+
+<div class="page">
+
+  <header>
+    <p class="eyebrow">Résumé — 2026</p>
+    <h1>Rishe S</h1>
+    <p class="role-line">Founder &amp; Systems Architect — AI Automation × Environmental Robotics</p>
+    <div class="flow-rule"></div>
+    <div class="contact-row">
+      <span>Chennai, Tamil Nadu, India</span>
+      <a href="mailto:rishe.s.t.08@gmail.com">rishe.s.t.08@gmail.com</a>
+      <a href="https://www.linkedin.com/in/rishe-s-t" target="_blank">linkedin.com/in/rishe-s-t</a>
+      <a href="https://breculia.tech" target="_blank">breculia.tech</a>
+    </div>
+  </header>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">01</span><h2>Summary</h2><span class="sec-line"></span></div>
+    <p class="summary">Co-founder building at the intersection of hardware, environmental engineering, and applied AI. Led design and integration of a patent-pending water-filtration system from prototype to national competition, then built and ran an independent AI automation practice serving early-stage founders. Comfortable owning a build end-to-end — engineering, product, and go-to-market.</p>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">02</span><h2>Experience</h2><span class="sec-line"></span></div>
+    <div class="timeline">
+
+      <div class="role">
+        <div class="role-top">
+          <span class="role-title">Co-Founder, COO &amp; System/Design Architect <span class="role-org">— Terragen</span></span>
+          <span class="role-date">May 2024 — Present</span>
+        </div>
+        <div class="role-loc">Chennai, India · prev. TechBenders</div>
+        <ul>
+          <li>Led the team building the Hydro Perivallon Craft — an autonomous vessel that filters microplastics from rivers</li>
+          <li>Designed the patent-pending Micro Sift Filtration Module; owned system integration</li>
+          <li>World Robot Olympiad — Regional Champion, National Top 6 (500+ teams)</li>
+          <li>Secured funding from SRM Public School and patent support from SRM University</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <div class="role-top">
+          <span class="role-title">Founder &amp; CEO <span class="role-org">— Breculia AI</span></span>
+          <span class="role-date">May 2025 — Jun 2026</span>
+        </div>
+        <div class="role-loc">San Antonio, TX (remote) · Independent venture</div>
+        <ul>
+          <li>Built AI voice agents for end-to-end appointment booking and intake — no manual handoff</li>
+          <li>Shipped n8n workflows automating lead routing, follow-ups, and reminders for founder clients</li>
+          <li>Built internal tooling with Claude Code to remove repetitive ops work</li>
+          <li>Ran weekly refinement cycles and monthly performance reporting per engagement</li>
+        </ul>
+      </div>
+
+      <div class="role">
+        <div class="role-top">
+          <span class="role-title">Growth Intern <span class="role-org">— Examplit</span></span>
+          <span class="role-date">Apr 2025 — Aug 2025</span>
+        </div>
+        <div class="role-loc">Cambridge, MA (remote)</div>
+        <ul>
+          <li>Drove user acquisition through influencer partnerships and direct student outreach</li>
+          <li>Designed cold email campaigns for education creators; ran consultative sales</li>
+          <li>Analyzed conversion data to optimize targeting and messaging</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">03</span><h2>Achievements &amp; Recognition</h2><span class="sec-line"></span></div>
+    <div class="grid-cards">
+
+      <div class="card">
+        <span class="tag">Robotics</span>
+        <div class="title">World Robot Olympiad</div>
+        <div class="desc">Regional Champion · National Top 6 of 500+ teams</div>
+      </div>
+
+      <div class="card">
+        <span class="tag">Water Tech</span>
+        <div class="title">Stockholm Junior Water Prize India</div>
+        <div class="desc">Top 10 Nationalist</div>
+      </div>
+
+      <div class="card">
+        <span class="tag">Biotech</span>
+        <div class="title">SRMIST Biotechnology Bootcamp</div>
+        <div class="desc">Winner, 2-day national bootcamp</div>
+      </div>
+
+      <div class="card">
+        <span class="tag">Startup</span>
+        <div class="title">SAI Tech S2T 5.0</div>
+        <div class="desc">Winner, national competition</div>
+      </div>
+
+      <div class="card">
+        <span class="tag">Aerospace</span>
+        <div class="title">SRMIST Aerospace Week — Glider Competition</div>
+        <div class="desc">Winner, against college-level teams</div>
+      </div>
+
+      <div class="card">
+        <span class="tag">Design</span>
+        <div class="title">Robolution — Circuit Breakers &amp; Design Thinker</div>
+        <div class="desc">Runner-Up</div>
+      </div>
+
+      <div class="card">
+        <span class="tag">Startup</span>
+        <div class="title">Eureka Startup Challenge</div>
+        <div class="desc">National Top 500 Finalist · Eureka Junior Advanced Rounds</div>
+      </div>
+
+      <div class="card">
+        <span class="tag">Innovation</span>
+        <div class="title">Youth Ideathon Nationals</div>
+        <div class="desc">Top 500 &amp; Top 1500 Finalist</div>
+      </div>
+
+      <div class="card">
+        <span class="tag">Design</span>
+        <div class="title">Design Championship</div>
+        <div class="desc">Runner-Up — 3D Modeling &amp; Graphic Design</div>
+      </div>
+
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">04</span><h2>Certifications</h2><span class="sec-line"></span></div>
+    <div class="cert-list">
+      <div class="cert-row"><span class="cert-name">Data Science and AI — 8-week certification</span><span class="cert-issuer">IIT Madras</span></div>
+      <div class="cert-row"><span class="cert-name">CS50: Introduction to Computer Science</span><span class="cert-issuer">Harvard University</span></div>
+      <div class="cert-row"><span class="cert-name">Prompt Engineering for Developers</span><span class="cert-issuer">DeepLearning.AI</span></div>
+      <div class="cert-row"><span class="cert-name">Full Stack Web Development</span><span class="cert-issuer">Training program</span></div>
+      <div class="cert-row"><span class="cert-name">Entrepreneurship Program</span><span class="cert-issuer">University of Cambridge</span></div>
+      <div class="cert-row"><span class="cert-name">Blue Ocean Student Entrepreneurs — Mini-Course</span><span class="cert-issuer">Blue Ocean Strategy</span></div>
+      <div class="cert-row"><span class="cert-name">Plan for Entrepreneurial Activity</span><span class="cert-issuer">Course</span></div>
+      <div class="cert-row"><span class="cert-name">Defy the Limits with Amazon — Future Careers Experience</span><span class="cert-issuer">Amazon</span></div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head"><span class="sec-num">05</span><h2>Skills</h2><span class="sec-line"></span></div>
+    <div class="skill-groups">
+      <div>
+        <div class="skill-group-label">AI &amp; Automation</div>
+        <div class="chip-row">
+          <span class="chip">AI Voice Agents</span>
+          <span class="chip">n8n Workflows</span>
+          <span class="chip">Claude Code</span>
+          <span class="chip">Prompt Engineering</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">Engineering &amp; Design</div>
+        <div class="chip-row">
+          <span class="chip">System Architecture</span>
+          <span class="chip">Fusion 360</span>
+          <span class="chip">Jigs, Fixtures &amp; SPM Design</span>
+          <span class="chip">Product Prototyping</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">Go-to-Market</div>
+        <div class="chip-row">
+          <span class="chip">Lead Generation</span>
+          <span class="chip">Outbound Sales</span>
+          <span class="chip">Revenue Management</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section style="margin-bottom: 0;">
+    <div class="sec-head"><span class="sec-num">06</span><h2>Education</h2><span class="sec-line"></span></div>
+    <div class="edu-block">
+      <div class="edu-title">SRM Public School</div>
+      <div class="edu-sub">Computer Science with Business Administration</div>
+      <div class="edu-date">2017 — 2026 · Incoming undergraduate, Aug 2026</div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Rishe S · Résumé</span>
+    <span>Updated July 2026</span>
+  </footer>
+
+</div>
+
+</body>
+</html>
